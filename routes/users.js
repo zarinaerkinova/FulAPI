@@ -4,10 +4,15 @@ const router = Router()
 const fs = require('fs')
 const path = require('path')
 
-const users = []
+const users = [{name: "Tom"}]
+module.exports = users
 
 router.get('/', (req, res) => {
-    res.status(200).send(users)
+    // res.status(200).send(users)
+    res.render('users', {
+        title: 'Users',
+        isUsers: true
+    })
 })
 
 router.get('/user', (req, res) => {

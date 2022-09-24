@@ -1,12 +1,18 @@
 const express = require('express')
 const app = express()
 const morgan = require('morgan')
+const path = require('path')
 
 require('dotenv').config()
+
+app.set('views', './views')
+app.set('view engine', 'pug')
 
 // Importing routes
 const homeRouter = require('./routes/home')
 const usersRouter = require('./routes/users')
+
+app.use(express.static(path.join(__dirname, 'public')))
 
 app.use(express.urlencoded({ extended: true }))
 app.use(express.json())
